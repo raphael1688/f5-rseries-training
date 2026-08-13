@@ -611,7 +611,9 @@ The **system aaa authentication password-hashing-algorithm config algorithm** co
     
     
 With blowfish you can select either **4**, **5**, or **15** rounds.   
-    
+
+.. code-block:: bash
+
     r10900-1-gsa(config)#system aaa authentication password-hashing-algorithm config algorithm blowfish rounds ?
     Possible completions:
     4    
@@ -631,7 +633,7 @@ Navigate to **Authentication & Access** -> **Authentication Settings** page, and
 Setting the Password Hashing Algorithm via API
 ----------------------------------------------
 
-You can set the password hashing algorithm via the API. You can set the **algorithm** to either **sha512** which is the default, or **blowfish**.
+You can set the password hashing algorithm via the API. You can set the **algorithm** to either **sha512** which is the default, or **blowfish** as well as specify the number of **rounds**.
  
 
 .. code-block:: bash
