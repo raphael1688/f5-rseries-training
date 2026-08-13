@@ -2030,7 +2030,14 @@ If you are using Postman, instead of clicking **Send**, click on the arrow next 
   :align: center
   :scale: 70%
 
+Foreground Diagnostics
+======================
 
+F5OS v2.0 introduces advanced foreground diagnostic features designed to optimize system monitoring, streamline troubleshooting, and enhance overall reliability on F5 rSeries platforms. This feature allows you check the health of hardware components such as CPU, memory, and disk while the system is running, without taking tenants offline. Foreground diagnostics improve fault isolation and help reduce “No Trouble Found” (NTF) outcomes before a Return Merchandise Authorization (RMA) is approved. You can start, stop, and run diagnostic profiles, and view results including run state, pass/fail outcome, and execution duration from the CLI, webUI, or REST API.
+
+More details on Foreground Diagnostics can be founf here:
+
+`Foreground Diagnostics Overview <https://techdocs.f5.com/en-us/f5os-2-0-0/f5-rseries-systems-administration-configuration/title-system-monitoring.html#foreground-diagnostics-overview>`_
 
 Console Access via Built-In Terminal Server
 ==============================================
