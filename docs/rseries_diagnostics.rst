@@ -1653,7 +1653,9 @@ rSeries systems support Always on Management (AOM) for low level diagnostics. De
 
 `K000148736: Overview of the AOM subsystem in F5OS <https://my.f5.com/manage/s/article/K000148736>`_
 
-By default, AOM is enabled on the rSeries console port, and can optionally be accessed over SSH via the out-of-band management port if desired. You will need to assign a  dedicated IP address to the AOM subsystem (for access over SSH), which is different than the F5OS management IP address. You will specify an IP address, prefix, and gateway as well as a username and password for AOM access. Addtionally, there is a separate AOM SSH timeout setting and login banner that may also be configured. 
+By default, AOM is enabled on the rSeries console port, and can optionally be accessed over SSH via the out-of-band management port if desired. You will need to assign a dedicated IP address to the AOM subsystem (for access over SSH), which is different than the F5OS management IP address. You will specify an IP address, prefix, and gateway as well as a username and password for AOM access. Addtionally, there is a separate AOM SSH timeout setting and login banner that may also be configured. 
+
+F5OS 2.0 added the ability to configure 802.1Q tagged VLANs on the rSeries management port. You may also assign the AOM IP address to be assigned to a specific mgmt-vlan in F5OS 2.0 or later releases. 
 
 
 Enabling AOM Access for SSH via CLI
@@ -1703,6 +1705,19 @@ To view the AOM configuration via CLI enter the command **show running-config sy
     system aom config ipv4 dhcp-enabled false
     system aom config ipv4 address 172.22.50.35
     r5900-1-gsa# 
+
+If you have one or more mgmt-vlans defined, you can add one of them to the AOM configuration so that it is bound to a specific taggged or untagged VLAN on the management port.
+Use the **system aom config mgmt-vlan** command to bind a VLAN to the AOM configuration. 
+
+.. code-block:: bash
+
+    r10900-1-gsa(config)#system aom config ipv4 address 172.22.50.47
+    r10900-1-gsa(config)#system aom config ipv4 gateway 172.22.50.62
+    r10900-1-gsa(config)#system aom config ipv4 prefix-length 26
+    r10900-1-gsa(config)#system aom config mgmt-vlan 500  
+    r10900-1-gsa(config)#commit
+    Commit complete.
+    r10900-1-gsa(config)#
 
 Once the AOM SSH access is setup, you can access the AOM diagnostic menu remotely.
 

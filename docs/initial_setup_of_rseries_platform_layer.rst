@@ -194,7 +194,7 @@ Add one or more vlans via the **mgmt-vlan** CLI command. In the case below, a ta
     Commit complete.
     r10900-1-gsa(config)#
 
-You can then assign that VLAN to either the F5OS layer or to tenants. In the example below, the mgmt-vlan configured in the previous step will be assigned to the F5OS layer. 
+You can then assign that VLAN to either the F5OS layer or to individual tenants. In the example below, the mgmt-vlan configured in the previous step will be assigned to the F5OS layer. 
 
 .. note:: If you are connected to the F5OS layer via SSH, changing the VLAN assignment will disconnect your management session and possibly lock you out of the system until the upstream management switch settings are aligned to the new configuration. It is best to make this type of change via the dedicated rSeries console port to avoid being locked out of the system.
 
