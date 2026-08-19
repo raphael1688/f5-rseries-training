@@ -67,6 +67,9 @@ To save any configuration you must enter **commit**.
 Internal Appliance IP Ranges
 ----------------------------
 
+Internal Appliance IP Ranges via CLI
+----------------------------------
+
 The rSeries appliances ship with a default internal RFC6598 address space of 100.64.0.0/12. This should be sufficient for most production environments. You can verify this with the following command.
 
 .. code-block:: bash
@@ -162,6 +165,54 @@ F5OS 2.0 adds an additional option for customers who can't use RFC6598 address s
       <unsignedByte, 0 .. 16>[0]
     r5900-1-gsa(config)# system network config network-range-type RFC1918 prefix
 
+Internal Appliance IP Ranges via API
+----------------------------------
+
+To view the currently configured internal network ranges via API use the following API call.
+
+.. code-block:: bash
+
+  GET https://{{rseries_appliance3_ip}}:8888/restconf/data/openconfig-system:system/f5-system-network:network
+
+The response will show the current configured network ranges for use internal to the VELOS chassis.
+
+
+.. code-block:: json
+
+
+    {
+        "f5-system-network:network": {
+            "config": {
+                "network-range-type": "RFC6598"
+            },
+            "state": {
+                "configured-network-range-type": "RFC6598",
+                "configured-network-range": "100.64.0.0/12",
+                "active-network-range-type": "RFC6598",
+                "active-network-range": "100.64.0.0/12"
+            }
+        }
+    }
+
+
+To configure the internal network ranges via CLI use the following API call.
+
+.. code-block:: bash
+
+  PATCH https://{{rseries_appliance3_ip}}:8888/restconf/data/openconfig-system:system/f5-system-network:network
+
+In the body of the API call, add the desired network-range-type as seen below.
+
+
+.. code-block:: json
+
+  {
+      "f5-system-network:network": {
+          "config": {
+              "network-range-type": "RFC6598"
+          }
+      }
+  }
 
 -------------------------------
 IP Address Assignment & Routing

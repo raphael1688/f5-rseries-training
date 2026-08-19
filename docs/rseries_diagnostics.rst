@@ -1848,7 +1848,7 @@ In the body of the response, you'll see the currently configured mgmt-vlan entri
     }
 
 
-Next, add the mgmt-vlan to the aom configuration.
+Next, add the mgmt-vlan to the AOM configuration.
 
 .. code-block:: bash
 
