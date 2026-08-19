@@ -26,6 +26,8 @@ Initial Setup of rSeries F5OS Platform Layer
 
 `IP Address Assignment & Routing via API <https://clouddocs.f5networks.net/training/community/rseries-training/html/initial_setup_of_rseries_platform_layer.html#ip-address-assignment-routing-via-api>`_
 
+`Setting the Primary Key via API <https://clouddocs.f5networks.net/training/community/rseries-training/html/initial_setup_of_rseries_platform_layer.html#setting-the-primary-key-via-api>`_
+
 `Manual Licensing via API <https://clouddocs.f5.com/training/community/rseries-training/html/initial_setup_of_rseries_platform_layer.html#manual-licensing-via-api>`_
 
 `Automatic Licensing via API <https://clouddocs.f5.com/training/community/rseries-training/html/initial_setup_of_rseries_platform_layer.html#automatic-licensing-via-api>`_
