@@ -220,6 +220,11 @@ IP Address Assignment & Routing
 
 The rSeries appliance requires its own unique out-of-band IP address for the F5OS layer. The IP addresses can be statically defined or acquired via DHCP. In addition to the IP address, a default route and subnet mask/prefix length is defined. 
 
+
+IP Address Assignment & Routing via CLI
+---------------------------------------
+
+
 Once logged in you will configure the static IP addresses (unless DHCP is preferred).
 
 .. code-block:: bash
@@ -256,6 +261,8 @@ You can then assign that VLAN to either the F5OS layer or to individual tenants.
     Commit complete.
     r10900-1-gsa(config)#
 
+IP Address Assignment & Routing via webUI
+---------------------------------------
 
 Now that the out-of-band address and routing are configured, you can attempt to access the F5OS webUI via the IP address that has been defined. You should see a screen like the one below (If you are running a version prior to F5OS 2.0), and you can verify your management interface settings by going to the **System Settings -> Management Interface** page. 
 
@@ -284,6 +291,153 @@ Prior to F5OS 2.0, only a single default gateway was configurable for the out-of
     appliance-1(config)# system routes route dns config network 10.238.160.22/24 gateway 10.238.170.254
     appliance-1(config)# system routes route ntp config network 10.238.150.22/24 gateway 10.238.170.253
     appliance-1(config)# commit
+
+IP Address Assignment & Routing via API
+---------------------------------------
+
+You may alter the configuration of the rSeries appliance out-of-band interface via the API. To view the current out-of-band interface IP settings enter the following API call:
+
+.. code-block:: bash
+
+  GET https://{{rseries_appliance3_ip}}:8888/restconf/data/openconfig-system:system/f5-mgmt-ip:mgmt-ip
+
+The API response will be similar to the output below:
+
+.. code-block:: json
+
+    {
+        "f5-mgmt-ip:mgmt-ip": {
+            "config": {
+                "dhcp-enabled": false,
+                "ipv4": {
+                    "system": {
+                        "address": "172.22.50.3"
+                    },
+                    "prefix-length": 26,
+                    "gateway": "172.22.50.62"
+                },
+                "ipv6": {
+                    "system": {
+                        "address": "::"
+                    },
+                    "prefix-length": 0,
+                    "gateway": "::"
+                },
+                "mgmt-vlan": 500
+            },
+            "state": {
+                "ipv4": {
+                    "system": {
+                        "address": "172.22.50.3"
+                    },
+                    "prefix-length": 26,
+                    "gateway": "172.22.50.62"
+                },
+                "mgmt-vlan": 500,
+                "ipv6": {
+                    "system": {
+                        "address": "::"
+                    },
+                    "prefix-length": 0,
+                    "gateway": "::"
+                }
+            }
+        }
+    }
+
+
+To configure the out-of-band interface IP settings enter the following API call:
+
+.. Note:: Changing the IP address will disrupt connectivity to the out-of-band ports.
+
+
+.. code-block:: bash
+
+  PATCH https://{{rseries_appliance3_ip}}:8888/restconf/data/openconfig-system:system/f5-mgmt-ip:mgmt-ip
+
+In the body of the API call enter the following:
+
+.. code-block:: json
+
+   {
+        "f5-mgmt-ip:mgmt-ip": {
+            "config": {
+                "dhcp-enabled": false,
+                "ipv4": {
+                    "system": {
+                        "address": "172.22.50.3"
+                    },
+                    "prefix-length": 26,
+                    "gateway": "172.22.50.62"
+                },
+                "ipv6": {
+                    "system": {
+                        "address": "::"
+                    },
+                    "prefix-length": 0,
+                    "gateway": "::"
+                },
+                "mgmt-vlan": 500
+            }
+        }
+    }
+
+To view the current management routes, use the following API call.
+
+.. code-block:: bash
+
+    GET https://{{rseries_appliance3_ip}}:8888/restconf/data/openconfig-system:system/f5-system-routes:routes
+
+The body of the API response will look similar to the output below.
+
+.. code-block:: json
+
+    {
+        "f5-system-routes:routes": {
+            "route": [
+                {
+                    "network": "10.10.10.0/24",
+                    "config": {
+                        "network": "10.10.10.0/24",
+                        "gateway": "172.22.50.62",
+                        "description": "route for DNS"
+                    },
+                    "state": {
+                        "network": "10.10.10.0/24",
+                        "gateway": "172.22.50.62",
+                        "description": "route for DNS"
+                    }
+                }
+            ]
+        }
+    }
+
+To configure a management route, issue the following API call.
+
+.. code-block:: bash
+
+    PATCH https://{{rseries_appliance3_ip}}:8888/restconf/data/openconfig-system:system/f5-system-routes:routes
+
+In the body of the API call enter the following information.
+
+.. code-block:: json
+
+    {
+        "f5-system-routes:routes": {
+            "f5-system-routes:route": [
+                {
+                    "f5-system-routes:network": "10.10.10.0/24",
+                    "f5-system-routes:config": {
+                        "f5-system-routes:network": "10.10.10.0/24",
+                        "f5-system-routes:gateway": "172.22.50.62",
+                        "f5-system-routes:description": "route for DNS"
+                    }
+                }
+            ]
+        }
+    }
+
+
 
 ---------------
 System Settings
