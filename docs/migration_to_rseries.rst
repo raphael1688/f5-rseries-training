@@ -29,7 +29,7 @@ When migrating a BIG-IP configuration to an F5OS-A (rSeries) platform using a UC
 
 `Step-by-Step Guide: How to Manually Fix UCS files for F5OS migration to rSeries platforms <https://my.f5.com/manage/s/article/K000160543>`_
 
-During migrations care should be taken to avoid Layer2 loops if shared VLANs are in use:
+During migrations, care should be taken to avoid Layer2 loops if shared VLANs are in use:
 
 `Best Practices for VLAN Configuration on F5OS-Appliance (rSeries): Avoiding Layer 2 Loops <https://my.f5.com/manage/s/article/K000152319>`_
 
