@@ -13,11 +13,19 @@ Going forward, F5 has and will continue to enhance the native UCS based migratio
 
 **tmsh load sys ucs platform-migrate validate**
 
-More details can be found in the following solution article:
-
 `K82540512: Overview of the UCS archive 'platform-migrate' option <https://my.f5.com/manage/s/article/K82540512>`_
 
-In addition to the Journeys tool and the platform-migrate utility, there is a migration based Ansible collection that can be leveraged to both setup F5OS on a target rSeries system, and migrate a configuration into an F5OS based TMOS tenant:
+Some additional important considerations about UCS files can be found in the following solution articles:
+
+`Overview of the UCS archive 'keep-current-management-ip' option <https://my.f5.com/manage/s/article/K000132494>`_
+
+`Step-by-Step Guide: How to Manually Fix UCS files for F5OS migration to rSeries platforms <https://my.f5.com/manage/s/article/K000160543>`_
+
+In addition, during migrations care should be taken to avoid Layer2 loops:
+
+`Best Practices for VLAN Configuration on F5OS-Appliance (rSeries): Avoiding Layer 2 Loops <https://my.f5.com/manage/s/article/K000152319>`_
+
+In addition to the platform-migrate utility, there is a migration based Ansible collection that can be leveraged to both setup F5OS on a target rSeries system, and migrate a configuration into an F5OS based TMOS tenant:
 
 `Modernizing F5 Platforms with Ansible <https://community.f5.com/kb/technicalarticles/modernizing-f5-platforms-with-ansible/341973>`_
 
