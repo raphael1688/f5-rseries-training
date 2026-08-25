@@ -25,7 +25,7 @@ To avoid current Management IP change, you can specify the keep-current-manageme
 
 `Overview of the UCS archive 'keep-current-management-ip' option <https://my.f5.com/manage/s/article/K000132494>`_
 
-When migrating a BIG-IP configuration to an F5OS-A (rSeries) platform using a UCS file, the import may fail if the UCS contains configurations that are not supported on F5OS-A. Specifically, UCS files exported from BIG-IP devices that use trunk (LAG) interfaces require manual editing before they can be successfully imported on an rSeries tenant. This is addressed in version 21.0.1, but for prior versions and edit of the UCS will be required.
+When migrating a BIG-IP configuration to an F5OS-A (rSeries) platform using a UCS file, the import may fail if the UCS contains configurations that are not supported on F5OS-A. Specifically, UCS files exported from BIG-IP devices that use trunk (LAG) interfaces require manual editing before they can be successfully imported on an rSeries tenant. This is addressed in version 21.0.1, but for prior versions an edit of the UCS will be required.
 
 `Step-by-Step Guide: How to Manually Fix UCS files for F5OS migration to rSeries platforms <https://my.f5.com/manage/s/article/K000160543>`_
 
