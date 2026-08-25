@@ -15,13 +15,21 @@ Going forward, F5 has and will continue to enhance the native UCS based migratio
 
 `K82540512: Overview of the UCS archive 'platform-migrate' option <https://my.f5.com/manage/s/article/K82540512>`_
 
+You can migrate UCS configuration files from iSeries and VIPRION BIG-IP systems to F5OS BIG-IP platforms using the platform-migrate option of the tmsh load sys ucs command. Beginning in version 21.1.0, the validate (dry run) capability enhances this workflow by checking UCS compatibility before migration and generating a report of unsupported or modified configuration elements.
+
+`UCS Migration Workflow for F5OS BIG-IP Platforms <https://techdocs.f5.com/en-us/bigip-21-1-0/big-ip-system-migrating-devices-and-configurations-between-different-platforms/ucs-migration-workflow-for-f5os-big-ip-platforms.html>`_
+
 Some additional important considerations about UCS files can be found in the following solution articles:
+
+To avoid current Management IP change, you can specify the keep-current-management-ip option to the load sys ucs command.
 
 `Overview of the UCS archive 'keep-current-management-ip' option <https://my.f5.com/manage/s/article/K000132494>`_
 
+When migrating a BIG-IP configuration to an F5OS-A (rSeries) platform using a UCS file, the import may fail if the UCS contains configurations that are not supported on F5OS-A. Specifically, UCS files exported from BIG-IP devices that use trunk (LAG) interfaces require manual editing before they can be successfully imported on an rSeries tenant. This is addressed in version 21.0.1, but for prior versions and edit of the UCS will be required.
+
 `Step-by-Step Guide: How to Manually Fix UCS files for F5OS migration to rSeries platforms <https://my.f5.com/manage/s/article/K000160543>`_
 
-In addition, during migrations care should be taken to avoid Layer2 loops:
+During migrations care should be taken to avoid Layer2 loops if shared VLANs are in use:
 
 `Best Practices for VLAN Configuration on F5OS-Appliance (rSeries): Avoiding Layer 2 Loops <https://my.f5.com/manage/s/article/K000152319>`_
 
