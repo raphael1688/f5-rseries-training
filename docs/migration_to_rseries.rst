@@ -5,7 +5,7 @@ Migration to rSeries
 
 F5 understands migrating configurations to new platforms can be a challenge and we’ve developed tooling that will help customers migrate existing BIG-IP configurations into rSeries tenants. Originally, F5 promoted the F5 BIG-IP Journeys application that assisted with migrating UCS based configurations from older platforms such as iSeries to current TMOS versions running as tenants on the rSeries platforms.
 
-The Journeys tool was originally hosted on GitHub, but has now been moved to downloads.f5.com. It can still be used for migrations to specific supported TMOS versions, but it is being phased out for migrations to newer TMOS versions in favor of the platform-migrate utility. More details about the changes can be found in the following solution article.
+The Journeys tool was originally hosted on GitHub but has now been moved to downloads.f5.com. It can still be used for migrations to specific supported TMOS versions, but it is being phased out for migrations to newer TMOS versions in favor of the platform-migrate utility. More details about the changes can be found in the following solution article.
 
 `K000137313: F5 Journeys - BIG-IP upgrade and migration utility <https://my.f5.com/manage/s/article/K000137313>`_
 
